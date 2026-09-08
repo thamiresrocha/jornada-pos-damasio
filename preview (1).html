@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sua jornada na Pós-Damásio</title>
+<style>
+:root{
+  --navy:#06182d;
+  --navy-2:#0a3766;
+  --navy-3:#0f497f;
+  --gold:#ffbf31;
+  --blue:#318cff;
+  --white:#f7f9fc;
+  --text:#dbe7f3;
+  --muted:#8fa7c0;
+  --line:rgba(136,178,219,.22);
+  --card:rgba(15,57,96,.46);
+  --card-2:rgba(5,22,40,.72);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 25% 4%, rgba(20,78,135,.62) 0, rgba(8,40,73,.38) 28%, transparent 48%),
+    linear-gradient(135deg,#082f59 0%,#061b33 48%,#030912 100%);
+  min-height:100vh;
+  line-height:1.45;
+}
+body:before{
+  content:"D";
+  position:fixed;
+  right:-4vw;
+  top:11vh;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:min(46vw,720px);
+  line-height:.8;
+  color:transparent;
+  -webkit-text-stroke:2px rgba(126,164,201,.08);
+  pointer-events:none;
+  z-index:0;
+}
+.wrapper{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:48px 28px 80px}
+.brand{font-size:11px;letter-spacing:.08em;font-weight:700;color:#8da9c2;margin-bottom:48px}
+.hero{position:relative;padding:28px 0 48px;border-bottom:1px solid var(--line)}
+.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:12px;font-weight:700;margin-bottom:18px}
+.kicker:after{content:"";width:72px;height:2px;background:var(--gold);display:inline-block}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-style:italic;margin:0}
+h1{font-size:clamp(44px,6vw,84px);line-height:.98;max-width:780px;letter-spacing:-.03em}
+.hero p{font-size:clamp(17px,2vw,21px);max-width:760px;color:var(--text);margin:24px 0 0}
+.hero-mark{position:absolute;right:0;top:0;width:94px;height:94px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 14px 0 0;opacity:.85}
+.alert{margin:30px 0 0;padding:18px 20px;border:1px solid rgba(255,191,49,.32);background:rgba(255,191,49,.08);border-radius:14px;display:flex;gap:14px;align-items:flex-start;max-width:890px}
+.alert b{color:var(--gold)}
+.alert .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:7px;flex:0 0 auto}
+.section{padding:64px 0;border-bottom:1px solid var(--line)}
+.section-head{display:flex;gap:26px;align-items:flex-start;margin-bottom:28px}
+.label{background:var(--gold);color:#07182a;font-size:11px;font-weight:800;padding:7px 14px;border-radius:5px;white-space:nowrap;margin-top:7px}
+h2{font-size:clamp(34px,4.3vw,56px);line-height:1.05;letter-spacing:-.02em}
+.section-intro{color:var(--muted);max-width:760px;margin:12px 0 0;font-size:16px}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.quick-card{background:linear-gradient(180deg,rgba(18,64,106,.72),rgba(7,29,52,.85));border:1px solid var(--line);border-radius:14px;padding:20px;min-height:158px;box-shadow:0 16px 30px rgba(0,0,0,.13)}
+.quick-card .icon{width:34px;height:34px;border:1px solid rgba(255,191,49,.42);border-radius:9px;display:grid;place-items:center;color:var(--gold);font-size:16px;font-weight:800;margin-bottom:18px}
+.quick-card h3{font-family:Arial,Helvetica,sans-serif;font-style:normal;font-size:16px;margin-bottom:10px}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:7px;color:var(--text);font-size:13px}
+.route .chip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:5px 8px;border-radius:7px}
+.route .arrow{color:var(--gold);font-weight:800}
+.journey{position:relative;padding-left:0;margin-top:18px}
+.cycle-intro{margin:0 0 18px;padding:18px 20px;border-radius:14px;background:rgba(49,140,255,.08);border:1px solid rgba(49,140,255,.22)}
+.cycle-intro .cycle-label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:6px}
+.cycle-intro strong{display:block;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:24px;color:var(--white);margin-bottom:4px}
+.cycle-intro p{margin:0;color:var(--text);font-size:14px;line-height:1.55}
+.cycle-divider{margin:30px 0 18px;padding-top:24px;border-top:1px solid var(--line)}
+.cycle-divider .cycle-label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:6px}
+.cycle-divider h3{font-size:27px;margin-bottom:7px}
+.cycle-divider p{margin:0;color:var(--text);font-size:14px}
+.journey:before{display:none}
+.step{position:relative;margin:0 0 20px;background:linear-gradient(135deg,rgba(12,54,95,.58),rgba(4,17,31,.72));border:1px solid var(--line);border-radius:18px;padding:25px 26px;overflow:visible}
+.step:before{display:none}
+.step.blue:before{display:none}
+.step-head{display:grid;grid-template-columns:1fr;gap:6px;align-items:start}
+.step-num{font-size:12px;color:var(--gold);font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding-top:0;margin:0 0 2px}
+.step.blue .step-num{color:var(--blue)}
+.step h3{font-size:29px;line-height:1.08;margin-bottom:8px}
+.step p{margin:0;color:var(--text)}
+.step-body{display:grid;grid-template-columns:1.35fr .9fr;gap:28px;margin-top:22px}
+.checks{display:grid;gap:12px}
+.check{display:flex;gap:10px;align-items:flex-start;color:var(--text)}
+.check:before{content:"—";color:var(--gold);font-weight:800}
+.step.blue .check:before{color:var(--blue)}
+.path-box{background:rgba(4,17,31,.72);border:1px solid var(--line);border-radius:13px;padding:16px}
+.path-box .eyebrow{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}
+.big{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:44px;color:var(--gold);line-height:1;margin:5px 0 8px}
+.big.blue{color:var(--blue)}
+.small{font-size:13px;color:var(--muted)}
+.dates{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.date{border-top:2px solid rgba(49,140,255,.45);padding:14px 0 0}
+.date.gold{border-color:var(--gold)}
+.date .when{font-size:18px;font-weight:800;color:var(--blue)}
+.date.gold .when{color:var(--gold)}
+.date .what{font-size:13px;color:var(--text);margin-top:3px}
+.rule-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.rule{padding:18px;border-radius:13px;background:rgba(255,255,255,.045);border:1px solid var(--line)}
+.rule strong{display:block;color:var(--gold);font-size:20px;margin-bottom:5px}
+.rule span{font-size:13px;color:var(--text)}
+.help-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:14px}
+.help{border:1px solid var(--line);border-radius:15px;padding:20px;background:rgba(6,25,45,.7)}
+.help.support{display:block}
+.help .top{font-size:13px;font-weight:800;color:var(--gold);margin-bottom:10px}
+.help h3{font-family:Arial,Helvetica,sans-serif;font-style:normal;font-size:18px;margin-bottom:8px}
+.help p{font-size:14px;color:var(--text);margin:0}
+.summary{margin-top:28px;border-radius:20px;padding:28px;background:linear-gradient(135deg,rgba(255,191,49,.12),rgba(49,140,255,.08));border:1px solid rgba(255,191,49,.24)}
+.summary h3{font-size:30px;margin-bottom:10px}
+.summary-intro{max-width:900px;color:var(--text);font-size:15px;line-height:1.6;margin:0 0 20px}
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.summary-item{padding:18px 18px 18px 16px;border-left:2px solid var(--gold);background:rgba(0,0,0,.08);min-height:118px}
+.summary-item b{display:block;color:var(--white);font-size:17px;margin-bottom:8px}
+.summary-item span{font-size:13px;color:var(--muted);line-height:1.55}
+.footnote{margin:12px 0 4px;color:#bcd0e3;font-size:13px;line-height:1.5;padding-left:2px}
+.footer{padding-top:32px;color:#6f8ba5;font-size:11px;display:flex;justify-content:space-between;gap:20px}
+@media(max-width:900px){
+ .quick-grid{grid-template-columns:repeat(2,1fr)}
+ .step-body{grid-template-columns:1fr}
+ .dates{grid-template-columns:repeat(2,1fr)}
+ .rule-cards,.help-grid{grid-template-columns:1fr}
+ .summary-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+ .wrapper{padding:28px 18px 60px}
+ .brand{margin-bottom:28px}
+ .hero{padding-top:16px}
+ .hero-mark{width:64px;height:64px}
+ .section{padding:48px 0}
+ .section-head{display:block}
+ .label{display:inline-block;margin-bottom:14px}
+ .quick-grid{grid-template-columns:1fr}
+ .journey{padding-left:0}
+ .journey:before{display:none}
+ .step{padding:21px 18px}
+ .step:before{display:none}
+ .step-head{grid-template-columns:1fr;gap:6px}
+ .step h3{font-size:25px}
+ .dates,.summary-grid{grid-template-columns:1fr}
+ .footer{display:block}
+ .footer div+div{margin-top:6px}
+}
+@media print{
+ body{background:#071b31!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body:before{position:absolute}
+ .wrapper{max-width:none;padding:24px}
+ .section{break-inside:avoid}
+ .step,.quick-card,.help,.summary{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<main class="wrapper">
+  <div class="brand">PÓS-GRADUAÇÃO DAMÁSIO</div>
+
+  <section class="hero">
+    <div class="hero-mark"></div>
+    <div class="kicker">GUIA RÁPIDO DA SUA PÓS</div>
+    <h1>Sua jornada na Pós-Damásio</h1>
+    <p>Um guia simples para saber <strong>onde acessar</strong>, <strong>o que acompanhar</strong> e <strong>quais prazos observar</strong> durante o curso.</p>
+    <div class="alert"><span class="dot"></span><div><b>A pós é flexível, mas possui prazos.</b> Você organiza seu ritmo de estudo, enquanto avaliações e mudanças de ciclo seguem as datas do Calendário Acadêmico.</div></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><h2>Encontre o que você precisa</h2><p class="section-intro">Antes de seguir a jornada, veja abaixo onde encontrar as principais informações e tarefas da sua pós.</p></div>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-card"><div class="icon">01</div><h3>Consulte as datas da sua pós</h3><div class="route"><span class="chip">Menu lateral</span><span class="arrow">›</span><span class="chip">Calendário Acadêmico</span></div></div>
+      <div class="quick-card"><div class="icon">02</div><h3>Envie seus documentos</h3><div class="route"><span class="chip">Secretaria</span><span class="arrow">›</span><span class="chip">Documentação</span></div></div>
+      <div class="quick-card"><div class="icon">03</div><h3>Acesse suas aulas</h3><div class="route"><span class="chip">Aulas</span><span class="arrow">›</span><span class="chip">Disciplina</span><span class="arrow">›</span><span class="chip">Aulas</span></div></div>
+      <div class="quick-card"><div class="icon">04</div><h3>Realize suas avaliações</h3><div class="route"><span class="chip">Aulas</span><span class="arrow">›</span><span class="chip">Disciplina</span><span class="arrow">›</span><span class="chip">Avaliações e atividades</span></div></div>
+      <div class="quick-card"><div class="icon">05</div><h3>Atualize seus dados</h3><div class="route"><span class="chip">Perfil</span><span class="arrow">›</span><span class="chip">Meus dados</span></div></div>
+      <div class="quick-card"><div class="icon">06</div><h3>Acompanhe seu certificado</h3><div class="route"><span class="chip">Secretaria</span><span class="arrow">›</span><span class="chip">Certificados e Declarações</span></div></div>
+      <div class="quick-card"><div class="icon">07</div><h3>Envie uma dúvida de conteúdo</h3><div class="route"><span class="chip">Disciplina</span><span class="arrow">›</span><span class="chip">Tira-Dúvidas</span></div></div>
+      <div class="quick-card"><div class="icon">08</div><h3>Acompanhe os comunicados</h3><div class="route"><span class="chip">Mural de Avisos</span><span class="arrow">+</span><span class="chip">E-mail</span></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><h2>Siga sua jornada na pós</h2><p class="section-intro">Avance pelas etapas na ordem abaixo. Em cada uma, veja o que fazer, onde acessar e quais prazos acompanhar.</p></div>
+    </div>
+
+    <div class="journey">
+      <div class="cycle-intro">
+        <span class="cycle-label">1º CICLO · MESES 1 A 6</span>
+        <strong>Comece pelo seu primeiro ciclo.</strong>
+        <p>As etapas 1 a 4 e todas as datas apresentadas nesse trecho pertencem ao 1º ciclo, formado pelos Módulos I e II. Use o Calendário Acadêmico para confirmar cada prazo.</p>
+      </div>
+
+      <article class="step">
+        <div class="step-head"><div class="step-num">Etapa 1</div><div><h3>Prepare seu início</h3><p>Antes de começar os estudos, confirme seus dados, envie a documentação e identifique as datas do seu 1º ciclo.</p></div></div>
+        <div class="step-body">
+          <div class="checks">
+            <div class="check">Separe e envie CPF, RG, diploma de graduação, certidão de nascimento ou casamento e comprovante de residência.</div>
+            <div class="check">Acesse o Calendário Acadêmico e anote as datas importantes do seu 1º ciclo.</div>
+            <div class="check">Confira seus dados cadastrais em <strong>Perfil › Meus dados</strong> e atualize o que for necessário.</div>
+            <div class="check">Consulte regularmente o Mural de Avisos e os e-mails enviados pela instituição.</div>
+          </div>
+          <div class="path-box">
+            <div class="eyebrow">Envio da documentação</div>
+            <div class="big">10/09</div>
+            <div class="small">Upload no portal em PDF, JPG ou PNG, com até 4 MB por arquivo.</div>
+          </div>
+        </div>
+        <p class="footnote">* Envie a documentação preferencialmente até a data. Não deixe para enviar no último momento: sua certificação depende da aprovação dos seus documentos.</p>
+      </article>
+
+      <article class="step blue">
+        <div class="step-head"><div class="step-num">Etapa 2</div><div><h3>Acesse suas aulas e organize seus estudos</h3><p>Entre nas disciplinas pela Área do Aluno e distribua seus estudos dentro do período previsto para o módulo.</p></div></div>
+        <div class="step-body">
+          <div class="checks">
+            <div class="check">No menu principal, selecione <strong>Aulas</strong>.</div>
+            <div class="check">Selecione a disciplina que deseja acessar.</div>
+            <div class="check">Abra a listagem de aulas e avance no conteúdo conforme sua rotina, sem perder de vista as datas do calendário.</div>
+          </div>
+          <div class="path-box">
+            <div class="eyebrow">Caminho</div>
+            <div class="route"><span class="chip">Aulas</span><span class="arrow">›</span><span class="chip">Disciplina</span><span class="arrow">›</span><span class="chip">Listagem de aulas</span></div>
+          </div>
+        </div>
+        <div class="eyebrow" style="margin-top:24px;color:var(--blue);font-weight:800">1º CICLO · PRINCIPAIS DATAS DO MÓDULO I</div>
+        <div class="dates" style="margin-top:10px">
+          <div class="date gold"><div class="when">10/ago</div><div class="what">Início das aulas</div></div>
+          <div class="date"><div class="when">17–31/ago</div><div class="what">Aula inaugural</div></div>
+          <div class="date"><div class="when">14–25/set</div><div class="what">Aulas interativas</div></div>
+          <div class="date gold"><div class="when">05–30/out</div><div class="what">Avaliação do Módulo I</div></div>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-head"><div class="step-num">Etapa 3</div><div><h3>Realize suas avaliações dentro do prazo</h3><p>Quando a janela de avaliação estiver aberta, acesse cada disciplina e realize a AV dentro do período definido no Calendário Acadêmico.</p></div></div>
+        <div class="step-body">
+          <div>
+            <div class="rule-cards">
+              <div class="rule"><strong>7,0</strong><span>nota mínima para aprovação na disciplina</span></div>
+              <div class="rule"><strong>3</strong><span>tentativas por disciplina dentro do ciclo</span></div>
+              <div class="rule"><strong>05–30/out</strong><span>janela da AV do Módulo I · 1º ciclo</span></div>
+            </div>
+            <div class="checks" style="margin-top:18px"><div class="check">Se não atingir a nota mínima, aguarde o ciclo seguinte. A avaliação será disponibilizada novamente com 3 novas tentativas.</div></div>
+          </div>
+          <div class="path-box">
+            <div class="eyebrow">Para realizar a avaliação</div>
+            <div class="route"><span class="chip">Aulas</span><span class="arrow">›</span><span class="chip">Disciplina</span><span class="arrow">›</span><span class="chip">Avaliações e atividades</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="step blue">
+        <div class="step-head"><div class="step-num">Etapa 4</div><div><h3>Avance para o Módulo II e escolha se fará o TCC</h3><p>O Módulo II ainda faz parte do 1º ciclo. Quando ele for liberado, acesse as novas disciplinas, acompanhe a nova janela de AV e, se desejar, faça sua inscrição no TCC.</p></div></div>
+        <div class="step-body">
+          <div class="checks">
+            <div class="check"><strong>03/nov/2026:</strong> liberação do Módulo II do 1º ciclo.</div>
+            <div class="check"><strong>04–29/jan/2027:</strong> avaliação do Módulo II do 1º ciclo.</div>
+            <div class="check">O TCC é <strong>opcional</strong>.</div>
+            <div class="check">Se optar pelo TCC, faça a inscrição pelo formulário enviado pelo time acadêmico dentro do período informado.</div>
+          </div>
+          <div class="path-box">
+            <div class="eyebrow">Inscrição no TCC</div>
+            <div class="big blue">01–15/dez</div>
+            <div class="small">Consulte o e-mail e o Mural de Avisos para localizar o formulário e acompanhar as orientações.</div>
+          </div>
+        </div>
+      </article>
+
+      <div class="cycle-divider">
+        <span class="cycle-label">APÓS O 1º CICLO</span>
+        <h3>Verifique se ficou alguma pendência</h3>
+        <p>Ao final do 1º ciclo, confira suas aprovações. Se ainda houver alguma disciplina pendente, você seguirá automaticamente para o ciclo seguinte.</p>
+      </div>
+
+      <article class="step">
+        <div class="step-head"><div class="step-num">Etapa 5</div><div><h3>Regularize as pendências nos ciclos seguintes</h3><p>Se você não concluir alguma disciplina no 1º ciclo, acompanhe a reabertura das pendências e utilize as novas tentativas disponíveis nos ciclos seguintes.</p></div></div>
+        <div class="step-body">
+          <div class="checks">
+            <div class="check"><strong>1º ciclo:</strong> meses 1 a 6 — Módulos I e II + avaliações.</div>
+            <div class="check"><strong>2º ciclo:</strong> meses 7 a 12 — pendências reabrem automaticamente.</div>
+            <div class="check"><strong>3º ciclo:</strong> meses 13 a 18 — última chance de conclusão.</div>
+            <div class="check">Não é necessário solicitar rematrícula: ela é automática e gratuita. O conteúdo volta a ficar disponível com 3 novas tentativas de AV por ciclo restante.</div>
+          </div>
+          <div class="path-box">
+            <div class="eyebrow">Tempo de conclusão</div>
+            <div class="big">6–18</div>
+            <div class="small">meses: mínimo de 6 e prazo máximo de 18 meses.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="step blue">
+        <div class="step-head"><div class="step-num">Etapa 6</div><div><h3>Conclua o curso e acompanhe a certificação</h3><p>Depois de cumprir os requisitos acadêmicos, confirme se a documentação está aprovada e acompanhe o andamento da emissão do certificado.</p></div></div>
+        <div class="step-body">
+          <div class="checks">
+            <div class="check">Confirme a aprovação em todas as disciplinas.</div>
+            <div class="check">Verifique se toda a documentação obrigatória foi aprovada e está sem pendências.</div>
+            <div class="check">Após a conclusão e a regularização documental, acompanhe o prazo de emissão, que pode levar até <strong>90 dias úteis</strong>.</div>
+            <div class="check">Mantenha seus dados atualizados para o envio do certificado físico pelos Correios.</div>
+          </div>
+          <div class="path-box">
+            <div class="eyebrow">Acompanhar emissão</div>
+            <div class="route"><span class="chip">Secretaria</span><span class="arrow">›</span><span class="chip">Certificados e Declarações</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><h2>Precisa de ajuda?</h2><p class="section-intro">Primeiro, consulte o <strong>Mural de Avisos</strong> e o e-mail <strong>damasio@estude.damasio.com.br</strong>, onde são enviados os comunicados oficiais da sua pós. Se ainda precisar de atendimento, escolha o canal adequado abaixo.</p></div>
+    </div>
+    <div class="help-grid">
+      <div class="help support">
+        <div>
+          <div class="top">BOTÃO LARANJA DE SUPORTE</div>
+          <h3>Dúvidas sobre a plataforma, secretaria e documentação</h3>
+          <p>Nas páginas logadas, clique no <strong>botão laranja no canto inferior direito da tela</strong> para solicitar atendimento sobre plataforma, secretaria ou documentação.</p>
+          <p style="margin-top:10px"><strong>Dúvidas sobre a plataforma:</strong> resposta em até 2 dias úteis.<br><strong>Secretaria e documentação:</strong> resposta em até 15 dias úteis.</p>
+        </div>
+      </div>
+      <div class="help"><div class="top">TIRA-DÚVIDAS</div><h3>Dúvida de conteúdo</h3><p>Para dúvidas sobre o conteúdo das aulas, abra a disciplina e envie sua pergunta pela ferramenta <strong>Tira-Dúvidas</strong>. A resposta é em até 48 horas.</p></div>
+    </div>
+
+    <div class="summary">
+      <h3>Antes de sair, confirme estes 4 pontos</h3>
+      <p class="summary-intro">Use esta lista como uma verificação rápida ao longo do curso. Se estes quatro pontos estiverem sob controle, você reduz o risco de perder prazos ou informações importantes.</p>
+      <div class="summary-grid">
+        <div class="summary-item"><b>Calendário Acadêmico consultado</b><span>Use-o para confirmar as janelas de AV, as mudanças de módulo e as demais datas do seu ciclo.</span></div>
+        <div class="summary-item"><b>Mural de Avisos e e-mail acompanhados</b><span>Consulte os dois canais para não perder comunicados, inscrições e orientações acadêmicas.</span></div>
+        <div class="summary-item"><b>Caminho das avaliações identificado</b><span>Quando a janela estiver aberta, acesse <strong>Aulas › Disciplina › Avaliações e atividades</strong>.</span></div>
+        <div class="summary-item"><b>Documentação enviada e acompanhada</b><span>Envie os documentos com antecedência e acompanhe a aprovação, pois a certificação depende da regularização documental.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div>PÓS-GRADUAÇÃO DAMÁSIO</div><div>Guia de apoio para ambientação do aluno</div></footer>
+</main>
+</body>
+</html>
